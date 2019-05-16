@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Redux</title>
+</head>
+<body>
+    Latihan Redux
+<script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.1/redux.js"></script>
+<script>
+    const INITIAL_STATE = {user : ''}
+    const reducers = (state,action) => {
+        if(action.type == 'LOGIN_SUCCESS'){
+            return {...INITIAL_STATE , user : action.kiriman}
+        }else{
+            return INITIAL_STATE    
+        }
+    } 
+
+    const store = Redux.createStore(reducers)
+    store.subscribe(() => console.log(store.getState().user))
+
+    function Login(a){
+        return store.dispatch({
+            type : 'LOGIN_SUCCESS',
+            kiriman : a
+        })
+    }
+
+    Login('Fikri')
+    Login('Seto')
+    Login('Andi')
+
+</script>
+</body>
+</html>
